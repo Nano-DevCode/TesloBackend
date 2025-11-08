@@ -53,8 +53,17 @@ export class AuthService {
       throw new UnauthorizedException(`Credentials are not valid (password)`);
     }
 
-    console.log({user});
+    //console.log({user});
     
+
+    return {
+      ...user,
+      token: this.getJwtToken({id: user.id})
+    };
+
+  }
+
+  async checkAuthStatus(user: User){
 
     return {
       ...user,
