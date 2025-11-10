@@ -41,9 +41,7 @@ export class MessagesWsService {
         delete this.connectedClients[clientId];
     }
 
-    getConnectedClients(): string[] {
-        console.log(this.connectedClients);
-        
+    getConnectedClients(): string[] {     
         return Object.keys(this.connectedClients);
     }
 
@@ -56,7 +54,7 @@ export class MessagesWsService {
 
             const connectedClient = this.connectedClients[clientId];
 
-            if(connectedClient.user.id){
+            if(connectedClient.user.id === user.id){
                 connectedClient.socket.disconnect();
                 break;
             }
